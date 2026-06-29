@@ -1,17 +1,15 @@
 const sumAll = function (a, b) {
-  if (typeof a !== 'number' || typeof b !== 'number') return 'ERROR';
-  if (a % 1 !== 0 || b % 1 !== 0) return 'ERROR';
+  if (!Number.isInteger(a) || !Number.isInteger(b)) return 'ERROR';
   if (a < 0 || b < 0) return 'ERROR';
 
-  let small = a;
-  let big = b;
+  const temp = a;
   if (a > b) {
-    small = b;
-    big = a;
+    a = b;
+    b = temp;
   }
 
   let sum = 0;
-  for (let i = small; i < big + 1; i++) {
+  for (let i = a; i < b + 1; i++) {
     sum += i;
   }
   return sum;
